@@ -1,37 +1,35 @@
 import React from "react"
 import styled from "styled-components"
+import {sampleData} from '../readingList' ;
 
 const Container = styled.div`
   margin: 3rem auto;
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   font-family: sans-serif;
-  color: blue;
+`
+
+const ListContainer = styled.div`
+  margin-top: 24px;
 `
 
 const UserWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 auto 12px auto;
+  margin: 0 0 24px 0;
   &:last-child {
     margin-bottom: 0;
   }
-`
-
-const Avatar = styled.img`
-  flex: 0 0 96px;
-  width: 96px;
-  height: 96px;
-  margin: 0;
+  &:hover {
+    background: #eee
+  }
 `
 
 const Description = styled.div`
   flex: 1;
-  margin-left: 18px;
-  padding: 12px;
 `
 
 const Username = styled.h2`
@@ -41,11 +39,11 @@ const Username = styled.h2`
 
 const Excerpt = styled.p`
   margin: 0;
+  color: rgba(0,0,0, 0.7)
 `
 
 const User = props => (
   <UserWrapper>
-    <Avatar src={props.avatar} alt="" />
     <Description>
       <Username>{props.username}</Username>
       <Excerpt>{props.excerpt}</Excerpt>
@@ -57,21 +55,21 @@ const User = props => (
 interface IndexPageProps {}
   
 export default class IndexPage extends React.Component<IndexPageProps, {}> {
-  public render() {
+  render() {
     return (
         <Container>
-        <h1>About Styled Components</h1>
-        <p>Styled Components is cool</p>
-        <User
-          username="Jane Doe"
-          avatar="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg"
-          excerpt="I'm Jane Doe. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-        />
-        <User
-          username="Bob Smith"
-          avatar="https://s3.amazonaws.com/uifaces/faces/twitter/vladarbatov/128.jpg"
-          excerpt="I'm Bob smith, a vertically aligned type of guy. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-        />
+        <h1>Zord reading list</h1>
+        <p>Things to read 🤟</p>
+        <ListContainer>
+          <User
+            username={sampleData[0].title}
+            excerpt={sampleData[0].description}
+          />
+          <User
+            username={sampleData[1].title}
+            excerpt={sampleData[1].description}
+          />
+        </ListContainer>
       </Container>
     )
   }
