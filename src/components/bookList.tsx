@@ -54,7 +54,7 @@ interface AppProps {
   readingList: book[];
 }
 
-export default class App extends React.Component<AppProps> {
+export default class BookList extends React.Component<AppProps> {
   render() {
     return (
         <ListContainer>

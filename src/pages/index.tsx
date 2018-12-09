@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { sampleData } from "../readingList";
-import App from "../components/app";
+import BookList from "../components/bookList";
 
 //------------------------------------------------------
 
@@ -15,6 +15,13 @@ const Container = styled.div`
   font-family: sans-serif;
 `;
 
+const SiteTitle = styled.h1`
+  padding: 0 12px
+`
+const SiteDescription = styled.p`
+  padding: 0 12px
+`
+
 //------------------------------------------------------
 
 interface IndexPageProps {}
@@ -23,9 +30,9 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
   render() {
     return (
       <Container>
-        <h1 >Zord reading list</h1>
-        <p >Things to read 🤟</p>
-        <App readingList={sampleData}/>
+        <SiteTitle >Zord reading list</SiteTitle>
+        <SiteDescription >Things to read 🤟</SiteDescription>
+        <BookList readingList={sampleData}/>
       </Container>
     );
   }
