@@ -21,6 +21,25 @@ const SiteTitle = styled.h1`
 const SiteDescription = styled.p`
   padding: 0 12px;
 `;
+const SiteControls = styled.div`
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr;
+  & button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: right;
+    &:hover {
+      color: blue;
+      &::before { 
+      content: "👉";
+      color: red;
+}
+    }
+  }
+`;
 
 //------------------------------------------------------
 
@@ -45,9 +64,11 @@ export default class IndexPage extends React.Component<
     return (
       <Container>
         <SiteTitle>Zord reading list</SiteTitle>
-        <SiteDescription>Things to read 🤟</SiteDescription>
-        <button onClick={this.toggleList}>List</button>
-        <button onClick={this.toggleNewBook}>New Book</button>
+        <SiteControls>
+          <SiteDescription>Things to read 🤟</SiteDescription>
+          <button onClick={this.toggleList}>List</button>
+          <button onClick={this.toggleNewBook}>New</button>
+        </SiteControls>
         {this.state.showList ? <BookList readingList={sampleData} /> : <div />}
       </Container>
     );
