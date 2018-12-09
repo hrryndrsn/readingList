@@ -16,7 +16,7 @@ const UserWrapper = styled.div`
     margin-bottom: 0;
   }
   &:hover {
-    background: #eee;
+  
   }
 `;
 
@@ -51,7 +51,7 @@ const User = props => (
 );
 
 interface AppProps {
-  readingList: book[];
+  readingList: book[]
 }
 
 export default class BookList extends React.Component<AppProps> {

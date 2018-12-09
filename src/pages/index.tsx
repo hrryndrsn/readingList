@@ -16,24 +16,47 @@ const Container = styled.div`
 `;
 
 const SiteTitle = styled.h1`
-  padding: 0 12px
-`
+  padding: 0 12px;
+`;
 const SiteDescription = styled.p`
-  padding: 0 12px
-`
+  padding: 0 12px;
+`;
 
 //------------------------------------------------------
 
 interface IndexPageProps {}
+type IndexPageState = {
+  showList: boolean
+  showNewBookForm: boolean
+};
 
-export default class IndexPage extends React.Component<IndexPageProps, {}> {
+export default class IndexPage extends React.Component<
+  IndexPageProps,
+  IndexPageState
+> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showList: true,
+      showNewBookForm: false,
+    };
+  }
   render() {
     return (
       <Container>
-        <SiteTitle >Zord reading list</SiteTitle>
-        <SiteDescription >Things to read 🤟</SiteDescription>
-        <BookList readingList={sampleData}/>
+        <SiteTitle>Zord reading list</SiteTitle>
+        <SiteDescription>Things to read 🤟</SiteDescription>
+        <button onClick={this.toggleList}>List</button>
+        <button onClick={this.toggleNewBook}>New Book</button>
+        {this.state.showList ? <BookList readingList={sampleData} /> : <div />}
       </Container>
     );
   }
+
+  toggleList = () => {
+    this.setState({ showList: true, showNewBookForm: false});
+  };
+  toggleNewBook = () => {
+    this.setState({ showList: false, showNewBookForm: true });
+  };
 }
