@@ -21,21 +21,25 @@ const SiteTitle = styled.h1`
 const SiteDescription = styled.p`
   padding: 0 12px;
 `;
+const GHLink = styled.p`
+  padding: 0 12px;
+  line-height: 100%;
+`;
 const SiteControls = styled.div`
   display: grid;
-  grid-template-columns: 6fr 1fr 1fr;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
   & button {
     background: none;
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     text-align: right;
     &:hover {
-      color: blue;
+      font-weight: bold;
       &::before { 
       content: "👉";
-      color: red;
+      
 }
     }
   }
