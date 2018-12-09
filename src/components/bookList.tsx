@@ -24,12 +24,12 @@ const Description = styled.div`
   flex: 1;
 `;
 
-const Username = styled.h2`
+const BookTitle = styled.h2`
   margin: 0 0 12px 0;
   padding: 0;
 `;
 
-const Excerpt = styled.p`
+const Byline = styled.p`
   margin: 0;
   color: rgba(0, 0, 0, 0.7);
 `;
@@ -44,8 +44,8 @@ type book = {
 const User = props => (
   <UserWrapper >
     <Description>
-      <Username>{props.username}</Username>
-      <Excerpt>{props.excerpt}</Excerpt>
+      <BookTitle>{props.title}</BookTitle>
+      <Byline>{props.byline}</Byline>
     </Description>
   </UserWrapper>
 );
@@ -61,8 +61,8 @@ export default class BookList extends React.Component<AppProps> {
           { this.props.readingList.map((book, index) => {
             return (<User
               key={index}
-              username={book.title}
-              excerpt={book.description}
+              title={book.title}
+              byline={book.description}
             />);
           })}
         </ListContainer>

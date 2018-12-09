@@ -51,6 +51,12 @@ interface IndexPageProps {}
 type IndexPageState = {
   showList: boolean
   showNewBookForm: boolean
+  readingList: book[]
+};
+
+type book = {
+  title: string;
+  description: string;
 };
 
 export default class IndexPage extends React.Component<
@@ -62,6 +68,7 @@ export default class IndexPage extends React.Component<
     this.state = {
       showList: true,
       showNewBookForm: false,
+      readingList: sampleData
     };
   }
   render() {
@@ -73,7 +80,7 @@ export default class IndexPage extends React.Component<
           <button onClick={this.toggleList}>List</button>
           <button onClick={this.toggleNewBook}>New</button>
         </SiteControls>
-        {this.state.showList ? <BookList readingList={sampleData} /> : <div />}
+        {this.state.showList ? <BookList readingList={this.state.readingList} /> : <div />}
       </Container>
     );
   }
