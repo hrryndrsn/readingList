@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { sampleData } from "../readingList";
 import BookList from "../components/bookList";
+import NewBookForm from "../components/newBookForm";
 
 //------------------------------------------------------
 
@@ -39,8 +40,7 @@ const SiteControls = styled.div`
       font-weight: bold;
       &::before { 
       content: "👉";
-      
-}
+      }
     }
   }
 `;
@@ -66,8 +66,8 @@ export default class IndexPage extends React.Component<
   constructor(props) {
     super(props);
     this.state = {
-      showList: true,
-      showNewBookForm: false,
+      showList: false,
+      showNewBookForm: true,
       readingList: sampleData
     };
   }
@@ -76,11 +76,15 @@ export default class IndexPage extends React.Component<
       <Container>
         <SiteTitle>Zord reading list</SiteTitle>
         <SiteControls>
-          <SiteDescription>Things to read 🤟</SiteDescription>
+          <SiteDescription>
+            { this.state.showList ? "Things to read 🤟" : "Add a thing 📙"}    
+          </SiteDescription>
+          
           <button onClick={this.toggleList}>List</button>
           <button onClick={this.toggleNewBook}>New</button>
         </SiteControls>
         {this.state.showList ? <BookList readingList={this.state.readingList} /> : <div />}
+        {this.state.showNewBookForm ? <NewBookForm title={""} /> : <div />}
       </Container>
     );
   }

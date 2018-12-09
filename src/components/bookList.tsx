@@ -27,6 +27,7 @@ const Description = styled.div`
 const BookTitle = styled.h2`
   margin: 0 0 12px 0;
   padding: 0;
+  color: rgba(0,0,0,1)
 `;
 
 const Byline = styled.p`
