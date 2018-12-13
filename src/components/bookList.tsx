@@ -39,6 +39,7 @@ const Byline = styled.p`
 
 type book = {
   title: string;
+  author: string;
   description: string;
 };
 
@@ -46,6 +47,7 @@ const User = props => (
   <UserWrapper >
     <Description>
       <BookTitle>{props.title}</BookTitle>
+      <Byline>{props.author}</Byline>
       <Byline>{props.byline}</Byline>
     </Description>
   </UserWrapper>
@@ -63,6 +65,7 @@ export default class BookList extends React.Component<AppProps> {
             return (<User
               key={index}
               title={book.title}
+              author={book.author}
               byline={book.description}
             />);
           })}
