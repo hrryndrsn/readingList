@@ -60,16 +60,24 @@ type Book = {
   description: string;
 };
 
+const emptyBook = {
+  title: "",
+  author: "",
+  description: ""
+}
+
 export default class IndexPage extends React.Component<
   IndexPageProps,
   IndexPageState
 > {
   constructor(props) {
     super(props);
+    let findReadingList = localStorage.getItem("readingList")
+    let parseReadingList = JSON.parse(findReadingList)
     this.state = {
-      showList: false,
-      showNewBookForm: true,
-      readingList: sampleData
+      showList: true,
+      showNewBookForm: false,
+      readingList: parseReadingList ? parseReadingList : []
     };
   }
   render() {
@@ -98,7 +106,16 @@ export default class IndexPage extends React.Component<
   };
 
   addBook = (book: Book) => {
-    console.log('Derping!!', book)
-    this.setState({readingList: [ ...this.state.readingList, book]})
+    this.setState({
+      readingList: [ ...this.state.readingList, book],
+      showList: true,
+      showNewBookForm: false,
+    }, () => {
+        console.log(this.state)
+        localStorage.setItem("readingList", JSON.stringify(this.state.readingList));
+      }
+    
+    )
+    
   }
 }

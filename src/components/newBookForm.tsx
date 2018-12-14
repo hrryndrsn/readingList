@@ -118,6 +118,7 @@ export default class NewBookForm extends React.Component<
             placeholder="..."
             value={this.state.title}
             onChange={this.updateFormData}
+            required
           />
         </FormInputGroup>
         <FormInputGroup>
@@ -128,6 +129,7 @@ export default class NewBookForm extends React.Component<
             placeholder="..."
             value={this.state.auther}
             onChange={this.updateFormData}
+            required
           />
         </FormInputGroup>
 
@@ -139,6 +141,7 @@ export default class NewBookForm extends React.Component<
             placeholder="..."
             value={this.state.description}
             onChange={this.updateFormData}
+            required
           />
         </FormInputGroup>
 

@@ -20,8 +20,14 @@ const UserWrapper = styled.div`
   }
 `;
 
-const Description = styled.div`
-  flex: 1;
+const BookCardLayout = styled.div`
+  display: grid;
+`;
+
+const EmptyStateList = styled.div`
+  text-align: center;
+  margin: 20vh 10px;
+  color: rgba(0,0,0, 0.2);
 `;
 
 const BookTitle = styled.h2`
@@ -32,7 +38,18 @@ const BookTitle = styled.h2`
 
 const Byline = styled.p`
   margin: 0;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.6);
+`;
+
+const Author = styled.p`
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6);
+`;
+
+const Details = styled.div`
+ display: grid;
+ grid-template-rows: 1fr 1fr;;
+ gap: 12px;
 `;
 
 //------------------------------------------------------
@@ -45,11 +62,13 @@ type book = {
 
 const User = props => (
   <UserWrapper >
-    <Description>
+    <BookCardLayout>
       <BookTitle>{props.title}</BookTitle>
-      <Byline>{props.author}</Byline>
-      <Byline>{props.byline}</Byline>
-    </Description>
+      <Details>
+        <Author>{props.author}</Author>
+        <Byline>{props.byline}</Byline>
+      </Details>
+    </BookCardLayout>
   </UserWrapper>
 );
 
@@ -59,9 +78,16 @@ interface AppProps {
 
 export default class BookList extends React.Component<AppProps> {
   render() {
-    return (
+    if (this.props.readingList.length === 0) {
+      //no books
+      return (
+        <EmptyStateList>Read some boooks m80</EmptyStateList>
+      )
+    } else {
+      return (
         <ListContainer>
-          { this.props.readingList.map((book, index) => {
+          { 
+            this.props.readingList.map((book, index) => {
             return (<User
               key={index}
               title={book.title}
@@ -71,5 +97,8 @@ export default class BookList extends React.Component<AppProps> {
           })}
         </ListContainer>
     );
+    }
+    
   }
 }
+
