@@ -33,11 +33,13 @@ const EmptyStateList = styled.div`
 const BookTitle = styled.h2`
   margin: 0 0 12px 0;
   padding: 0;
-  color: rgba(0,0,0,1)
+  color: rgba(0,0,0,1);
+  font-family: 'Oswald', serif;
 `;
 
 const Byline = styled.p`
   margin: 0;
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.6);
 `;
 

@@ -18,6 +18,7 @@ const Container = styled.div`
 
 const SiteTitle = styled.h1`
   padding: 0 12px;
+  font-family: 'Lora', serif;
 `;
 const SiteDescription = styled.p`
   padding: 0 12px;
