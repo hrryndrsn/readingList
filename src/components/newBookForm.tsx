@@ -40,15 +40,15 @@ const FormLabel = styled.label`
 `;
 //------------------------------------------------------
 
-type BookData = {
+type Book = {
   title: string;
+  author: string;
   description: string;
-  auther: string;
-  price: number;
 };
 
 interface NewBookFormProps {
   title: string;
+  addNewBook: (newBookData: Book) => void
 }
 
 interface NewBookFormState {
@@ -101,10 +101,10 @@ export default class NewBookForm extends React.Component<
       title: this.state.title,
       author: this.state.auther,
       description: this.state.description,
-      price: this.state.price
     };
 
-    console.log(newBook);
+    //call parent component here 
+    this.props.addNewBook(newBook)
   };
 
   render() {
@@ -142,7 +142,7 @@ export default class NewBookForm extends React.Component<
           />
         </FormInputGroup>
 
-        <FormInputGroup>
+        {/* <FormInputGroup>
           <FormLabel>Price</FormLabel>
           <InlineEdit
             type="number"
@@ -150,7 +150,7 @@ export default class NewBookForm extends React.Component<
             value={this.state.price}
             onChange={this.updateFormData}
           />
-        </FormInputGroup>
+        </FormInputGroup> */}
 
         <BookFormControls>
           <SubmitButton type="submit">Add</SubmitButton>
