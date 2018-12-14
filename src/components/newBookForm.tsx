@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { eventNames } from "cluster";
 
 //------------------------------------------------------
 
@@ -85,7 +86,8 @@ export default class NewBookForm extends React.Component<
         break;
 
       case "price":
-        this.setState({ price: evt.target.value });
+        let flt = parseFloat(evt.target.value);
+        this.setState({ price: flt });
         break;
 
       default:
@@ -93,9 +95,21 @@ export default class NewBookForm extends React.Component<
     }
   };
 
+  formSubmit = evt => {
+    evt.preventDefault();
+    let newBook = {
+      title: this.state.title,
+      author: this.state.auther,
+      description: this.state.description,
+      price: this.state.price
+    };
+
+    console.log(newBook);
+  };
+
   render() {
     return (
-      <FormContainer>
+      <FormContainer onSubmit={this.formSubmit}>
         <FormInputGroup>
           <FormLabel>Title</FormLabel>
           <InlineEdit
@@ -118,7 +132,7 @@ export default class NewBookForm extends React.Component<
         </FormInputGroup>
 
         <FormInputGroup>
-        <FormLabel>Description</FormLabel>
+          <FormLabel>Description</FormLabel>
           <InlineEdit
             type="text"
             name="description"

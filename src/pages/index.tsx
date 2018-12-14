@@ -56,6 +56,7 @@ type IndexPageState = {
 
 type book = {
   title: string;
+  author: string;
   description: string;
 };
 
